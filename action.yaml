@@ -20,7 +20,7 @@ inputs:
     description: 'Coverage report file'
     required: true
   xunit_report:
-    description: 'Coverage test results in json'
+    description: 'Xunit report file'
     required: true
   
 runs:
@@ -37,5 +37,5 @@ runs:
       env:
         PYPI_USERNAME: ${{ inputs.pypi_username }}
         PYPI_PASSWORD: ${{ inputs.pypi_password }}
-    - run: pipenv run pytest --doctest-modules --junitxml=${{ inputs.reports_folder }}/${{ inputs.xunit_report }} --cov=. --cov-report=term --cov-report=xml:${{ inputs.reports_folder }}/${{ inputs.coverage_report }}
+    - run: pipenv run pytest --doctest-modules --junitxml=${{ inputs.reports_folder }}/${{ inputs.xunit_report }} --cov=. --cov-report=xml:${{ inputs.reports_folder }}/${{ inputs.coverage_report }} --cov-report=term
       shell: bash

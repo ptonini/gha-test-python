@@ -3,10 +3,6 @@ description: ''
 inputs:
   python_version:
     description: ''
-    required: false
-    default: '3.9.12'
-  reports_folder:
-    description: ''
     required: true
   pypi_username:
     description: ''
@@ -16,20 +12,23 @@ inputs:
     description: ''
     required: false
     default: ""
+  reports_folder:
+    description: ''
+    required: false
+    default: '.'
   coverage_report:
     description: 'Coverage report file'
     required: true
   xunit_report:
     description: 'Xunit report file'
     required: true
-  
 runs:
   using: 'composite'
   steps:
     - uses: actions/setup-python@v4
       with:
         python-version:  ${{ inputs.python_version }}
-        cache: 'pipenv'
+        cache: pipenv
     - run: pip3 install pipenv
       shell: bash
     - run: pipenv install --dev

@@ -1,4 +1,4 @@
-name: 'test-python'
+name: test-python
 description: ''
 inputs:
   python_version:
@@ -17,13 +17,13 @@ inputs:
     required: false
     default: '.'
   coverage_report:
-    description: 'Coverage report file'
+    description: ''
     required: true
   xunit_report:
-    description: 'Xunit report file'
+    description: ''
     required: true
 runs:
-  using: 'composite'
+  using: composite
   steps:
     - uses: actions/setup-python@v4
       with:
